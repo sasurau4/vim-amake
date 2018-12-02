@@ -2,3 +2,5 @@ amake
 9b584074f2d64bc538d635e21fb67f71a00b2b2a
 
 Vim.Buffer
+Async.Promise
+System.Job
