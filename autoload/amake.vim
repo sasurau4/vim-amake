@@ -1,7 +1,7 @@
 let s:Promise = vital#amake#import('Async.Promise')
 
 function! amake#hello_world() abort
-  echo "Hello World"
+  echo "Hello World"commit
 endfunction
 
 function! amake#fizzbuzz() abort
@@ -32,6 +32,21 @@ function! s:judge_fizzbuzz(i) abort
       echo a:i
     endif
 endfunction
+
+function! amake#eslint()
+  let result = system('yarn eslint ' . bufname(""))
+  echo result
+  let error_list = matchlist(result, '\v(\d+):(\d+)', 1)
+  echo error_list
+  if empty(error_list)
+    call clearmatches()
+    echo "No error"
+    return
+  endif
+  call matchaddpos("Error", [str2nr(error_list[1])])
+endfunction
+
+autocmd! BufWritePost *.js :call amake#eslint()
 
 function! amake#run(opener) abort
   let runner = amake#runner#new(&filetype)
