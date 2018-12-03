@@ -1,0 +1,11 @@
+{
+  "name": "vim-amake",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sasurau4/vim-amake.git",
+  "author": "Daiki Ihara <sasurau4@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.9.0"
+  }
+}
