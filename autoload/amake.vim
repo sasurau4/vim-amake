@@ -34,9 +34,12 @@ function! s:judge_fizzbuzz(i) abort
 endfunction
 
 function! amake#eslint()
-  let result = system('yarn eslint ' . bufname(""))
+  let result = split(system('yarn eslint ' . bufname("")), '\n')
   echo result
-  let error_list = matchlist(result, '\v(\d+):(\d+)', 1)
+  let error_list = []
+  for r in result
+    echo matchlist(r, '\v(\d+):(\d+)', 1)
+  endfor
   echo error_list
   if empty(error_list)
     call clearmatches()
